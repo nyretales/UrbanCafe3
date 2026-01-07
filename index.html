@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Urban Café Menu</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="header-content">
+            <img src="img/logo.png" alt="Logo" class="logo">
+            
+            <div class="store-branding">
+                <h1 id="store-name">URBAN CAFÉ</h1>
+                
+                <p class="store-address">Jl. Kopi Nikmat No. 99, Sinjai</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <nav class="category-nav">
+            <button class="active" onclick="switchTab('foods')">🍔 Makanan</button>
+            <button onclick="switchTab('drinks')">🥤 Minuman</button>
+        </nav>
+
+        <div id="menu-container" class="grid-container">
+            </div>
+    </main>
+
+    <div class="sticky-footer">
+        <div class="total-info">
+            <small>Total:</small>
+            <span id="grand-total">Rp 0</span>
+        </div>
+        <div class="footer-buttons">
+            <button onclick="showQRIS()" class="btn-qris">Lihat QRIS</button>
+            <button onclick="checkoutViaWA()" class="btn-wa">Pesan via WA</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #666; font-size: 0.8rem; margin-bottom: 60px;">
+        <span onclick="toggleAdminMode()" style="cursor: pointer;">🔒 Admin Mode</span>
+    </footer>
+
+    <div id="qris-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeQRIS()">&times;</span>
+            <h2>Scan QRIS</h2>
+            <img src="img/qris.jpg" alt="QRIS" class="qris-img">
+            <p>Tunjukkan bukti transfer atau kirim via WA.</p>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>

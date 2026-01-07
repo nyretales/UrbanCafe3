@@ -1,0 +1,125 @@
+:root {
+    --primary: #d3ad7f; /* Warna Emas */
+    --bg: #13131a;      /* Background Gelap */
+    --card-bg: #1e1e24;
+    --text: #ffffff;
+    --wa-color: #25D366; /* Warna Hijau WA */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+body { background-color: var(--bg); color: var(--text); padding-bottom: 90px; }
+
+/* HEADER */
+header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(19, 19, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px; border-bottom: 1px solid #333;
+    transition: all 0.3s ease;
+}
+.header-content { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+
+/* LOGO */
+.logo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; transition: 0.3s; border: 2px solid var(--primary); }
+
+/* JUDUL TOKO (Diperbesar) */
+h1 { 
+    font-size: 1.8rem; /* Ukuran font lebih besar */
+    font-weight: 800;  /* Lebih tebal */
+    letter-spacing: 1px; 
+    line-height: 1.2;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+/* ALAMAT (Baru) */
+.store-address {
+    font-size: 0.85rem; /* Ukuran kecil */
+    color: #aaaaaa;     /* Warna agak redup */
+    font-weight: 400;
+    margin: 0;
+}
+
+/* HEADER SAAT SCROLL (Logo Mengecil, Judul & Alamat Hilang) */
+header.scrolled .logo { width: 40px; height: 40px; }
+header.scrolled .store-branding { display: none; } /* Sembunyikan Nama & Alamat saat scroll */
+header.scrolled .header-content { flex-direction: row; justify-content: center; }
+
+/* NAVIGASI KATEGORI */
+.category-nav { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
+.category-nav button {
+    background: #333; color: #fff; border: 2px solid #444;
+    padding: 12px 25px; border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
+    
+    /* Font Setting Besar */
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.category-nav button.active {
+    background: var(--primary); color: #000;
+    border-color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(211, 173, 127, 0.4);
+}
+
+/* GRID MENU */
+.grid-container {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px; padding: 15px; max-width: 800px; margin: 0 auto;
+}
+.grid-container.center-layout { display: flex; flex-direction: column; align-items: center; }
+.grid-container.center-layout .menu-card { width: 100%; max-width: 400px; display: flex; align-items: center; gap: 15px; }
+.grid-container.center-layout .menu-img { width: 100px; height: 100px; }
+
+/* MENU CARD */
+.menu-card {
+    background: var(--card-bg); border-radius: 15px; overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    animation: fadeUp 0.5s ease backwards;
+    animation-delay: calc(var(--delay) * 0.1s);
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.menu-img { width: 100%; height: 140px; object-fit: cover; }
+.card-body { padding: 12px; }
+.item-name { font-size: 1rem; margin-bottom: 5px; }
+.item-price { color: var(--primary); font-weight: bold; }
+
+/* QTY CONTROLS */
+.qty-control { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.btn-qty { width: 25px; height: 25px; border-radius: 50%; border: none; cursor: pointer; background: #444; color: white; font-weight: bold; }
+.qty-display { font-weight: bold; min-width: 20px; text-align: center; }
+
+/* ADMIN INPUT */
+.admin-input { background: #fff; color: #000; width: 80px; padding: 2px; border-radius: 4px; border: none; }
+
+/* FOOTER (WA & QRIS) */
+.sticky-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #222; padding: 12px 15px; 
+    border-top: 1px solid #333; z-index: 99;
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+}
+.total-info { display: flex; flex-direction: column; min-width: 90px; }
+.footer-buttons { display: flex; gap: 8px; flex-grow: 1; justify-content: flex-end; }
+
+.btn-qris {
+    background: transparent; border: 1px solid var(--primary); color: var(--primary);
+    padding: 10px 15px; border-radius: 8px; font-weight: bold; cursor: pointer;
+}
+.btn-wa {
+    background: var(--wa-color); border: none; color: white;
+    padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;
+    flex-grow: 1; display: flex; align-items: center; justify-content: center;
+}
+
+/* MODAL */
+.modal.hidden { display: none; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 200; display: flex; justify-content: center; align-items: center; }
+.modal-content { background: white; color: black; padding: 20px; border-radius: 10px; text-align: center; position: relative; width: 90%; max-width: 350px; }
+.close { position: absolute; top: 5px; right: 15px; font-size: 24px; cursor: pointer; }
+.qris-img { width: 100%; max-width: 300px; margin: 10px 0; }
